@@ -2,33 +2,66 @@
 <html>
   <head>
     <style>
-
+      .title {
+        font-family: "Courier New";
+        text-align: center;
+        background-color: lightpink;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+      div#container {
+        width: auto;
+        border: 3px solid pink;
+        position: relative;
+      }
+      div#pyramid-select {
+        background: grey;
+        font-family: "Courier New";
+        padding: 15px;
+        overflow: hidden;
+      }
+      div#pyramid {
+        font-family: "Courier New";
+        font-size: 14pt;
+        background-color: lightgrey;
+        padding: 15px;
+        text-align: center;
+        clear: both;
+      }
+      #height-form, #symbol-form, #rangeValue {
+        float: left;
+        padding: 10px;
+      }
     </style>
   </head>
 
   <body>
     <h1 class="title">Pyramid Slide</h1>
-    <div>
-      <form id="symbol-form">
-        <label for="brick-symbol">Brick Symbol</label>
-        <select onchange="getSymbol(this.value)" id="brick-symbol">
-          <option value="#">#</option>
-          <option value="@">@</option>
-          <option value="X">X</option>
-          <option value="$">$</option>
-        </select>
-      </form>
-      <form id="height-form">
-        <label for="pyramid-height">How High?</label>
-        <input id="pyramid-height" type="range" min="1" max="20"
-        oninput="printValue(); drawPyramid(heightElem.value)"/>
-        <p id="rangeValue"></p>
-      </form>
+    <div id="container">
+      <div id="pyramid-select">
+        <form id="symbol-form">
+          <label for="brick-symbol">Brick Symbol</label>
+          <select onchange="drawPyramid(heightElem.value, this.value)" id="brick-symbol">
+            <option value="#">#</option>
+            <option value="@">@</option>
+            <option value="X">X</option>
+            <option value="$">$</option>
+          </select>
+        </form>
+        <form id="height-form">
+          <label for="pyramid-height">How High?</label>
+          <input id="pyramid-height" type="range" min="1" max="20"
+          oninput="printValue(); drawPyramid(heightElem.value)"/>
+        </form>
+
+        <div id="rangeValue"></div>
+
+      </div>
+      <div id="pyramid"></div>
     </div>
 
-    <div id="pyramid"></div>
-
     <script src="pyramid-slide.js"></script>
+
   </body>
 
 </html>

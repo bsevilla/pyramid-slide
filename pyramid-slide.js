@@ -1,20 +1,30 @@
 var heightElem = document.getElementById("pyramid-height");
-//var symbolElem = document.getElementById("brick-symbol").value;
+var sel = document.getElementById("brick-symbol");
+  //this variable is muteable and needs to be changed when it is being called.
 
 
+function getSelectedOption(sel){
+  var opt;
+  for (var i = 0, len = sel.options.length; i < len; i++){
+    opt = sel.options[i];
+    if (opt.selected === true){
+      break;
+    }
+  }
+  alert(opt);
+}
 
+function getSymbol(symbol){
+  alert("the symbol has been changed to " + symbol);
+}
 
 function printValue(){
-  function getSymbol(symbol){
-    var symbolElem = symbol;
-    return symbolElem
-  }
-  
   document.getElementById("rangeValue").innerHTML = heightElem.value;
 }
 
-function drawPyramid(height) {
-
+function drawPyramid(height, symbol) {
+//Write a function to get the selected value of brick symbol.
+    var symbolElem = sel.options[sel.selectedIndex].value;
     document.getElementById("pyramid").innerHTML = "";
 
     for (var row = 0; row < height; row++) {
